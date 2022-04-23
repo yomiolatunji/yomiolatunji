@@ -25,6 +25,10 @@ body {
     margin-right: auto !important;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .landing-page {
     background-color: #FFFFFF;
     background-position: center center;
