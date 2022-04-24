@@ -19,19 +19,15 @@ namespace YomiOlatunji.Core.DbModel.Post
         [Required]
         [MaxLength(200)]
         public string Title { get; set; }
-
         public string Content { get; set; }
         public string Excerpt { get; set; }
         public string Slug { get; set; }
         public string HeaderImage { get; set; }
         public bool CanComment { get; set; } = true;
-        public short PublishStatusId { get; set; }
-
-        public PublishStatus PublishStatus { get; set; }
-
+        public bool IsPublished { get; set; }
+        public bool IsArchived { get; set; }
         public DateTimeOffset? PublishDate { get; set; }
         public IList<PostTag> Tags { get; set; } = new List<PostTag>();
-        public IList<PostLink> Links { get; set; } = new List<PostLink>();
         public IList<Comment> Comments { get; set; }
     }
 

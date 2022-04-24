@@ -27,64 +27,23 @@
                         <div class="col-md-8 mr-auto ml-auto">
                             <h2>Yomi's Thought</h2>
                             <hr/>
-                            <div class="card mb-4">
+                            <br/>
+                            @foreach (var item in Model.Post.Data)
+                            {
+                                <div class="mb-4">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center justify-content-md-start">
-                                            <a href="/product/paper-kit-2-pro"
-                                               target="_blank">
-                                                <img class="shadow-lg border-radius-lg img-fluid" src="~/img/yomi-homepage.png">
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-8 col-md-12">
-                                            <h4 class="info-title"> New Ideas </h4>
-                                            <hr class="horizontal dark my-3"/>
-                                            <div class="row">
-                                                <div class="col-md-8">
-
-                                                    <div class="card-category">
-                                                        <span class="badge badge-primary main-tag">Featured</span>
-                                                    </div>
-
-
-                                                    <div class="card-description">
-                                                        <p>In the first sentence of Pitchfork’s review of my collaborative project with 9th Wonder, INDIE 500, a reviewer who is associated with music review site rhapsody.com writes about how I criticize and then distance myself from “celebrity straw men” with the line “celebrities be making money...</p>
-                                                    </div>
-
-
-                                                    <a href="javascript:;" class="btn btn-link btn-info">See more</a>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="product-list-right-side text-center"
-                                                         data-turbolinks="false">
-                                                        <div class="text-center font-weight-bolder mb-2 mt-3 mt-md-0">Download:</div>
-                                                        <div class="review-section">
-                                                            <div class="mt-4 mb-2 font-weight-bolder">Give Review:</div>
-                                                            <div class="field field-rating field-rating-dashboard"
-                                                                 data-number="product-review-481778-60">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center justify-content-md-start">
-                                            <img class="img-fluid" src="~/img/yomi-homepage.png">
+                                            <img class="img-fluid" src="@item.HeaderImage">
                                         </div>
                                         <div class="col-lg-8 col-md-12">
                                             <h4 class="card-title"> New Ideas </h4>
                                             <div class="card-category">
-                                                <span class="badge badge-primary">Featured</span>
+                                                <span class="badge badge-primary">@item.Category.Name</span>
                                             </div>
 
                                             <div class="card-description">
-                                                <p>In the first sentence of Pitchfork’s review of my collaborative project with 9th Wonder, INDIE 500, a reviewer who is associated with music review site rhapsody.com writes about how I criticize and then distance myself from “celebrity straw men” with the line “celebrities be making money...</p>
+                                                <p>@item.Excerpt</p>
                                             </div>
 
 
@@ -94,28 +53,9 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <hr/>
-                            <div class="mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center justify-content-md-start">
-                                            <img class="img-fluid" src="~/img/yomi-homepage.png">
-                                        </div>
-                                        <div class="col-lg-8 col-md-12">
-                                            <h4 class="card-title"> New Ideas </h4>
-                                            <a href="javascript:;" class="badge badge-primary">Primary</a>
-
-                                            <div class="card-description">
-                                                <p>In the first sentence of Pitchfork’s review of my collaborative project with 9th Wonder, INDIE 500, a reviewer who is associated with music review site rhapsody.com writes about how I criticize and then distance myself from “celebrity straw men” with the line “celebrities be making money...</p>
-                                            </div>
-
-
-                                            <a href="javascript:;" class="btn btn-link btn-info">See more</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div><br /><br />

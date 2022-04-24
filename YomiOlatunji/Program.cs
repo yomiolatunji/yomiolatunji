@@ -24,6 +24,7 @@ builder.Services.AddTransient<IPostTagRepository, PostTagRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IContactMessageRepository, ContactMessageRepository>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IPostService, PostService>();
 builder.Services.AddTransient<IContactMessageService, ContactMessageService>();
 
 var app = builder.Build();

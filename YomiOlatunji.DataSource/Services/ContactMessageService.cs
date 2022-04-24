@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YomiOlatunji.Core;
+﻿using YomiOlatunji.Core;
 using YomiOlatunji.Core.DbModel.Post;
 using YomiOlatunji.DataSource.Interface;
 using YomiOlatunji.DataSource.Services.Interfaces;
