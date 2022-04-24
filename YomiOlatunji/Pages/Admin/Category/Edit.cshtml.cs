@@ -1,4 +1,5 @@
 ﻿#nullable disable
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using YomiOlatunji.DataSource.Services.Interfaces;
 
 namespace YomiOlatunji.Pages.Admin.Category
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly ICategoryService _categoryService;

@@ -1,9 +1,11 @@
 ﻿#nullable disable
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using YomiOlatunji.DataSource.Services.Interfaces;
 
 namespace YomiOlatunji.Pages.Admin.Category
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly ICategoryService _categoryService;

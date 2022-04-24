@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using YomiOlatunji.DataSource.Services.Interfaces;
 
 namespace YomiOlatunji.Pages.Admin.Post
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly IPostService _postService;

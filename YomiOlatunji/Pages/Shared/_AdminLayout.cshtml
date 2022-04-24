@@ -33,20 +33,15 @@
             </div>
             <div class="collapse navbar-collapse" data-color="green">
                 <ul class="navbar-nav ml-auto">
-                    <li class="dropdown nav-item">
-
-                        <a href="#" class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-page="/Post">
                             Post
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-danger" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" asp-area="" asp-page="/Blogs">
-                                Post
-                            </a>
-                            <a class="dropdown-item" data-scroll="true" data-id="#contact-us" href="../sections.html#contactus">
-                                <i class="nc-icon nc-mobile"></i>
-                                Category
-                            </a>
-                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-page="/Category">
+                            Category
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-page="/Projects">
@@ -54,6 +49,7 @@
                         </a>
                     </li>
                 </ul>
+                <partial name="_LoginPartial" />
             </div>
         </div>
     </nav>
