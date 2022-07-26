@@ -1854,8 +1854,8 @@ select.selectpicker {
   cursor: pointer;
 }
 
-.table-condensed>tbody>tr>td,
-.table-condensed>tbody>tr>th,
+.table-condensed>t263042>tr>td,
+.table-condensed>t263042>tr>th,
 .table-condensed>tfoot>tr>td,
 .table-condensed>tfoot>tr>th,
 .table-condensed>thead>tr>td,
@@ -3132,7 +3132,7 @@ select,
 textarea {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  font-family: "Helvetica", Arial,"Montserrat",  sans-serif;
   font-weight: 300;
 }
 
@@ -3234,7 +3234,7 @@ h3 .small {
 .footer-big h5,
 .footer-big h4,
 .media .media-heading {
-  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  font-family: "Helvetica", Arial,"Montserrat",  sans-serif;
 }
 
 .title,
@@ -3251,7 +3251,7 @@ h3 .small {
 .footer-big h4 a,
 .media .media-heading,
 .media .media-heading a {
-  color: #333333;
+  color: #4C6085;
   text-decoration: none;
 }
 
@@ -3361,10 +3361,10 @@ blockquote small {
 
 /*     General overwrite     */
 body {
-  color: #4C6085;
+  color: #263042;
   font-size: 14px;
   font-weight: 300;
-  font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+  font-family:  "Helvetica", Arial, 'Montserrat', sans-serif;
 }
 
 a {

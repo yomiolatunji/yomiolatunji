@@ -50,12 +50,12 @@ a {
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         text-align: center;
-        color: #B2AFAB;
+        color: #263042;
         width: 100%;
     }
 
     .landing-page .motto {
-        color: #B2AFAB;
+        color: #263042;
         text-align: center;
         z-index: 2;
         position: relative;
@@ -71,7 +71,7 @@ a {
         }
 
         .landing-page .motto .title {
-            color: #B2AFAB;
+            color: #263042;
         }
     /*.landing-page .filter::after {
         background-color: rgba(0, 0, 0, 0.5);
@@ -87,13 +87,13 @@ a {
 
 
     .landing-page .container {
-        color: #B2AFAB;
+        color: #263042;
         position: relative;
         z-index: 3;
     }
 
     .landing-page .description {
-        color: #B2AFAB;
+        color: #263042;
     }
 
     .landing-page .homeimage {
