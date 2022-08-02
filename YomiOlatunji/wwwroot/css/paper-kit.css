@@ -10453,7 +10453,7 @@ video {
 }
 
 .card-register {
-  background-color: #FF8F5E;
+  background-color: #9FAEC8;
   border-radius: 8px;
   color: #fff;
   max-width: 350px;
@@ -10467,7 +10467,7 @@ video {
 }
 
 .card-register .card-title {
-  color: #B33C12;
+  color: #B33951;
   text-align: center;
 }
 
@@ -12646,7 +12646,7 @@ a.pswp__share--download:hover {
 }
 
 .register-card {
-  background-color: #FF8F5E;
+  background-color: #9FAEC8;
   border-radius: 8px;
   color: #fff;
   max-width: 350px;
@@ -12660,7 +12660,7 @@ a.pswp__share--download:hover {
 }
 
 .register-card .title {
-  color: #B33C12;
+  color: #B33951;
   text-align: center;
 }
 
@@ -12712,7 +12712,7 @@ a.pswp__share--download:hover {
 }
 
 .full-screen.login .demo-card {
-  background-color: #FF8F5E;
+  background-color: #9FAEC8;
   color: #fff;
 }
 
@@ -12721,7 +12721,7 @@ a.pswp__share--download:hover {
 }
 
 .full-screen.login .demo-card .title {
-  color: #B33C12;
+  color: #B33951;
   text-align: center;
 }
 
