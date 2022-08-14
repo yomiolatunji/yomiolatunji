@@ -12,7 +12,9 @@ namespace YomiOlatunji.DataSource.Services.Interfaces
     public interface IPostService
     {
         Task<PageModel<Post>> GetPost(int intPageIndex = 1, int intPageSize = 20, Expression<Func<Post, bool>>? filter = null, Func<IQueryable<Post>, IOrderedQueryable<Post>>? orderBy = null, string includeProperties = "");
-        Task<PageModel<Post>> GetAllPost(int intPageIndex = 1, int intPageSize = 20);
+        Task<PageModel<Post>> GetAllPost(int intPageIndex, int intPageSize = 20);
         Task<IList<Post>> GetAllPost();
+        Task<bool> AddPost(Post post, string userName);
+        Task<bool> PublishPost(long postId);
     }
 }

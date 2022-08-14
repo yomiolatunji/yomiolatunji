@@ -9,7 +9,7 @@ namespace YomiOlatunji.Core.DbModel.Audit
     public class AuthAuditTrail : AuditTrail
     {
         public DateTimeOffset? AuthorizeTime { get; set; }
-        public Guid? AuthorizedBy { get; set; }
+        public string? AuthorizedBy { get; set; }
         public bool IsAuthorized { get; set; }
     }
 }

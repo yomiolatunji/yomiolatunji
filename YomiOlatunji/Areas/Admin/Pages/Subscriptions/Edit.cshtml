@@ -1,0 +1,81 @@
+﻿@page
+@model YomiOlatunji.Areas.Admin.Pages.Subscriptions.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Subscription</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Subscription.Id" />
+            <div class="form-group">
+                <label asp-for="Subscription.EmailAddress" class="control-label"></label>
+                <input asp-for="Subscription.EmailAddress" class="form-control" />
+                <span asp-validation-for="Subscription.EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subscription.Name" class="control-label"></label>
+                <input asp-for="Subscription.Name" class="form-control" />
+                <span asp-validation-for="Subscription.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Subscription.Subscribed" /> @Html.DisplayNameFor(model => model.Subscription.Subscribed)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subscription.UnsubscribeDate" class="control-label"></label>
+                <input asp-for="Subscription.UnsubscribeDate" class="form-control" />
+                <span asp-validation-for="Subscription.UnsubscribeDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subscription.UnsubscribeReason" class="control-label"></label>
+                <input asp-for="Subscription.UnsubscribeReason" class="form-control" />
+                <span asp-validation-for="Subscription.UnsubscribeReason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subscription.CreateTime" class="control-label"></label>
+                <input asp-for="Subscription.CreateTime" class="form-control" />
+                <span asp-validation-for="Subscription.CreateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subscription.CreateBy" class="control-label"></label>
+                <input asp-for="Subscription.CreateBy" class="form-control" />
+                <span asp-validation-for="Subscription.CreateBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subscription.UpdateTime" class="control-label"></label>
+                <input asp-for="Subscription.UpdateTime" class="form-control" />
+                <span asp-validation-for="Subscription.UpdateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subscription.UpdateBy" class="control-label"></label>
+                <input asp-for="Subscription.UpdateBy" class="form-control" />
+                <span asp-validation-for="Subscription.UpdateBy" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Subscription.IsDeleted" /> @Html.DisplayNameFor(model => model.Subscription.IsDeleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -19,10 +19,12 @@ namespace YomiOlatunji.Core.DbModel.Post
         [Required]
         [MaxLength(200)]
         public string Title { get; set; }
-        public string Content { get; set; }
-        public string Excerpt { get; set; }
+        public string? Content { get; set; }
+        [MaxLength(200)]
+        public string? Excerpt { get; set; }
+        [MaxLength(200)]
         public string Slug { get; set; }
-        public string HeaderImage { get; set; }
+        public string? HeaderImage { get; set; }
         public bool CanComment { get; set; } = true;
         public bool IsPublished { get; set; }
         public bool IsArchived { get; set; }
@@ -40,11 +42,13 @@ namespace YomiOlatunji.Core.DbModel.Post
         public long PostId { get; set; }
 
         public Post Post { get; set; }
+        [MaxLength(200)]
         public string AuthorName { get; set; }
-        public string AuthorEmail { get; set; }
-        public bool IsAnonymous { get; set; }
+        [MaxLength(200)]
+        public string? AuthorEmail { get; set; }
+        public bool? IsAnonymous { get; set; }
         public string Message { get; set; }
-        public string ParentId { get; set; }
+        public long ParentId { get; set; }
     }
 
     public class PostTag

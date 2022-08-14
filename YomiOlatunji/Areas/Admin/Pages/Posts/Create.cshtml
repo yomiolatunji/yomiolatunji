@@ -1,0 +1,110 @@
+﻿@page
+@model YomiOlatunji.Areas.Admin.Pages.Posts.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-10 mr-auto ml-auto">
+    <h4>Post</h4>
+    <hr />
+    @* <div class="wizard-container">
+    <div class="card card-wizard" data-color="primary" id="wizardProfile">
+
+    <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="card-header text-center">
+    <h3 class="card-title">
+    Build Your Profile
+    </h3>
+    <h5 class="description">This information will let us know more about you.</h5>
+    <div class="wizard-navigation">
+    <ul>
+    <li class="nav-item">
+    <a class="nav-link active" href="#about" data-toggle="tab" role="tab" aria-controls="about" aria-selected="true">
+    <i class="nc-icon nc-single-02"></i>
+    About
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#account" data-toggle="tab" role="tab" aria-controls="account" aria-selected="true">
+    <i class="nc-icon nc-touch-id"></i>
+    Account
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#address" data-toggle="tab" role="tab" aria-controls="address" aria-selected="true">
+    <i class="nc-icon nc-pin-3"></i>
+    Address
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    <div class="card-body">
+    <div class="tab-content">
+    <div class="tab-pane show active" id="about">
+    <h5 class="info-text"> Let's start with the basic information (with validation)</h5>
+
+    </div>
+    <div class="tab-pane show" id="account">
+    <h5 class="info-text"> Let's start with the basic information (with validation)</h5>
+
+    </div>
+    <div class="tab-pane show" id="address">
+    <h5 class="info-text"> Let's start with the basic information (with validation)</h5>
+
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    *@
+    <partial name="_StatusMessage" for="StatusMessage" />
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Post.CategoryId" class="control-label"></label>
+            <select asp-for="Post.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Post.Title" class="control-label"></label>
+            <input asp-for="Post.Title" class="form-control" />
+            <span asp-validation-for="Post.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Post.Content" class="control-label"></label>
+            <textarea id="tiny" name="Post.Content"></textarea>
+            <span asp-validation-for="Post.Content" class="text-danger"></span>
+        </div>
+        <div class="form-group" >
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea#tiny',
+            plugins: [
+                'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+                'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+                'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+                'bullist numlist checklist outdent indent | removeformat | code table help'
+        })
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

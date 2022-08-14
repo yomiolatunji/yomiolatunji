@@ -1,0 +1,49 @@
+﻿@page
+@model YomiOlatunji.Areas.Admin.Pages.Messages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-10 mr-auto ml-auto">
+    <h2>Messages</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Subject
+                    </th>
+                    <th>
+                        Sender
+                    </th>
+                    <th>
+                        Date Sent
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ContactMessage.OrderByDescending(a => a.CreateTime))
+                {
+                    var styleStr = item.Read.GetValueOrDefault() ? "" : "font-weight: bold;";
+                    <tr>
+                        <td>
+                            <p style="@styleStr">
+                                <a asp-page="./Details" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </a>
+                            </p>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td style="word-wrap: break-word">
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
