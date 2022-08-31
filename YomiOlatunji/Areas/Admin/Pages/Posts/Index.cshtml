@@ -5,57 +5,68 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
-<div class="row">
-    <h2>Posts </h2>
+<div class="main">
+    <div class="section">
+        <div class="container">
+            <h2>Posts </h2>
 
-    <p>
-        <a asp-page="Create" class="btn btn-primary">Add Post</a>
-    </p>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Post[0].Category)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Post[0].Title)
-                    </th>
-                    <th>
-                        Status
-                    </th>
-                    <th>
-                        Date
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Post)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsPublished)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreateTime)|
-                            @Html.DisplayFor(modelItem => item.PublishDate)|
-                            @Html.DisplayFor(modelItem => item.UpdateTime)
-                        </td>
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+            <p>
+                <a asp-page="Create" class="btn btn-primary">Add Post</a>
+            </p>
+
+            <partial name="_StatusMessage" for="StatusMessage" />
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Post[0].Category)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Post[0].Title)
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Post)
+                        {
+                            var statusText = item.IsPublished ? "Published" : item.IsArchived ? "Archived" : "Draft";
+                            var statusDate = item.IsPublished ? item.PublishDate : item.UpdateTime ?? item.CreateTime;
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.Name)
+                                </td>
+                                <td>
+                                    <a asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                                </td>
+                                <td>
+                                    @statusText
+                                </td>
+                                <td>
+                                    @statusDate
+                                </td>
+                                <td>
+                                    @if (!item.IsPublished)
+                                    {
+                                        <a asp-page="./Publish" asp-route-id="@item.Id">Publish</a>
+                                    }
+                                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

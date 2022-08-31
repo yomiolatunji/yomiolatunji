@@ -1,0 +1,196 @@
+﻿
+@using YomiOlatunji.Extensions;
+@*@{
+    var s=HtmlHelperExtensions.IsSelecteda(this.Html, "s", "ss", "");
+  var ss=  Html.IsSelecteda("s", "ss",);
+}*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/img/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/img/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/icon/favicon-16x16.png">
+    <link rel="manifest" href="~/img/icon/site.webmanifest">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>@ViewBag.Title - Yomi Olatunji</title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/paper-dashboard.css?v=2.1.1" />
+    @*<link rel="stylesheet/scs" href="~/scss/paper-kit.scss" />*@
+    <link rel="stylesheet" href="~/YomiOlatunji.styles.css" asp-append-version="true" />
+</head>
+<body class="">
+    <div class="wrapper">
+        <div class="sidebar" data-color="default" data-active-color="primary">
+            <div class="logo">
+                <a asp-area="" asp-page="/Index" class="simple-text logo-mini">
+                    <div class="logo-image-small">
+                        <img src="~/img/icon/favicon-32x32.png" />
+                    </div>
+                </a>
+                <a asp-area="" asp-page="/Index" class="simple-text logo-normal">
+                    Yomi Olatunji
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <partial name="_LoginPartial" />
+                <ul class="nav">
+                    <li class="active">
+                        <a asp-area="Admin" asp-page="/Posts/Index">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    @*<li class=" @(Html.IsSelected("Posts","Index")) ">*@
+                    
+                    
+                    <li>
+                        <a data-bs-toggle="collapse" data-bs-target="#postsNav">
+                            <i class="nc-icon nc-single-copy-04"></i>
+                            <p>
+                                Post <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse " id="postsNav">
+                            <ul class="nav">
+                                <li>
+                                    <a class="nav-link" asp-area="Admin" asp-page="/Posts/Index">
+                                        <span class="sidebar-mini">P</span>
+                                        <span class="sidebar-normal">All Posts</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="Admin" asp-page="/Posts/Create">
+                                        <span class="sidebar-mini">+</span>
+                                        <span class="sidebar-normal">Add New</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="Admin" asp-page="/Categories/Index">
+                                        <span class="sidebar-mini">C</span>
+                                        <span class="sidebar-normal">Category</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Admin" asp-page="/Messages/Index">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>Message</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../examples/widgets.html">
+                            <i class="nc-icon nc-box"></i>
+                            <p>Users</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-minimize">
+                            <button id="minimizeSidebar" class="btn btn-icon btn-round">
+                                <i class="nc-icon nc-minimal-right text-center visible-on-sidebar-mini"></i>
+                                <i class="nc-icon nc-minimal-left text-center visible-on-sidebar-regular"></i>
+                            </button>
+                        </div>
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="javascript:;">Yomi Olatunji</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <form>
+                            <div class="input-group no-border">
+                                <input type="text" value="" class="form-control" placeholder="Search...">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <i class="nc-icon nc-zoom-split"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link btn-magnify" href="javascript:;">
+                                    <i class="nc-icon nc-layout-11"></i>
+                                    <p>
+                                        <span class="d-lg-none d-md-block">Stats</span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn-rotate" asp-area="Identity" asp-page="/Account/Manage/Index">
+                                    <i class="nc-icon nc-settings-gear-65"></i>
+                                    <p>
+                                        <span class="d-lg-none d-md-block">Account</span>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+
+                @RenderBody()
+            </div>
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a asp-area="" asp-page="/Index" target="_blank">Yomi</a></li>
+                                <li><a asp-area="" asp-page="/Blogs" target="_blank">Blog</a></li>
+                            </ul>
+                        </nav>
+                        <div class="credits ml-auto">
+                            <span class="copyright">
+                                © <script>
+                                      document.write(new Date().getFullYear())
+                                </script>, Softhrone
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap-tagsinput.js"></script>
+    <script src="~/lib/moment.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap-datetimepicker.js"></script>
+    <script src="~/lib/popper/popper.min.js"></script>
+    <script src="~/lib/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/lib/sweetalert2.min.js"></script>
+    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
+
+    <script src="~/js/paper-dashboard.js?v=2.1.1" type="text/javascript"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

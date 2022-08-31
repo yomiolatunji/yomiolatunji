@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using YomiOlatunji.Core.DbModel.Post;
@@ -15,6 +16,9 @@ namespace YomiOlatunji.Areas.Admin.Pages.Posts
         {
             _context = context;
         }
+
+        [TempData]
+        public string StatusMessage { get; set; }
 
         public IList<Post> Post { get;set; } = default!;
 

@@ -53,10 +53,31 @@
                        onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
                 <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
             </div>
+             <textarea id="tiny">
+                 </textarea>
         </div>
     </div>
 </form>
 
 @section Scripts {
+
+    <script src="https://cdn.tiny.cloud/1/5yb8uiyv1yne6xu4mtmig7q57c68l2ra1odedtetdic56plu/tinymce/6/tinymce.min.js"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea#tiny',
+            height: 500,
+            menubar: false,
+            plugins: [
+                'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+                'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+                'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+                'bullist numlist checklist outdent indent | removeformat | code table help',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+        });
+
+    </script>
     <partial name="_ValidationScriptsPartial" />
 }

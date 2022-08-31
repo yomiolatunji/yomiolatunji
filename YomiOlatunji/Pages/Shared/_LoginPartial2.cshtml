@@ -1,0 +1,64 @@
+﻿@using YomiOlatunji.Core.DbModel
+@inject SignInManager<ApplicationUser> _signInManager
+@inject UserManager<ApplicationUser> _userManager
+
+<div class="user">
+    @if (_signInManager.IsSignedIn(User))
+    {
+        var profilePic = _userManager.GetUserAsync(User)?.Result.ProfilePicture;
+
+        <div class="photo">
+            @if (profilePic != null)
+            {
+                <img style="width:40px;height:40px; -webkit-object-fit:cover; object-fit:cover; -ms-border-radius:30px; border-radius:30px"
+             src="data:image/*;base64,@(Convert.ToBase64String(profilePic))" alt="@User.Identity?.Name" />
+            }
+        </div>
+        <div class="info">
+            <a data-bs-toggle="collapse" data-bs-target="#collapseExample" class="collapsed">
+                <span>
+                    Hello @User.Identity?.Name!
+                    <b class="caret"></b>
+                </span>
+            </a>
+            <div class="clearfix"></div>
+            <div class="collapse" id="collapseExample">
+                <ul class="nav">
+                    <li>
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                            <span class="sidebar-mini">MP</span>
+                            <span class="sidebar-normal">My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                            <button type="submit" class="nav-link btn btn-link text-dark">
+                                <span class="sidebar-mini">LO</span>
+                                <span class="sidebar-normal">Logout</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="info">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">
+                        <span class="sidebar-mini">R</span>
+                        <span class="sidebar-normal">Register</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">
+                        <span class="sidebar-mini">L</span>
+                        <span class="sidebar-normal">Login</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    }
+</div>
