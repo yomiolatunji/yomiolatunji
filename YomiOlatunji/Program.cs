@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using YomiOlatunji.Core.DbModel;
 using YomiOlatunji.DataSource;
 using YomiOlatunji.DataSource.Interface;
@@ -34,6 +35,11 @@ builder.Services.AddTransient<IFileManager, FileManager>();
 builder.Services.AddTransient<IPostManager, PostManager>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+ 
+
+builder.Services.AddSingleton<IFileProvider>(
+            new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
 var app = builder.Build();
 

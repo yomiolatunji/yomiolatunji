@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace YomiOlatunji.Pages.Admin
+namespace YomiOlatunji.Areas.Admin
 {
     public class IndexModel : PageModel
     {
