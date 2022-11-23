@@ -52,6 +52,7 @@ I specialize in building robust backends that do all the heavy lifting for your 
 </div>
 <br/>
 <br/>
-![Profile views counter](https://komarev.com/ghpvc/?username=yomiolatunji&&style=flat-square)  
+![Profile views counter](https://komarev.com/ghpvc/?username=yomiolatunji&&style=flat-square) 
+![](https://komarev.com/ghpvc/?username=yomiolatunji&color=green)
 <br/>
 <br />
