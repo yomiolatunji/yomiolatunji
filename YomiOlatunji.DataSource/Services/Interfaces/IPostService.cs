@@ -15,6 +15,6 @@ namespace YomiOlatunji.DataSource.Services.Interfaces
         Task<PageModel<Post>> GetAllPost(int intPageIndex, int intPageSize = 20);
         Task<IList<Post>> GetAllPost();
         Task<bool> AddPost(Post post, string userName);
-        Task<bool> PublishPost(long postId);
+        Task<bool> PublishPost(long postId, string userName);
     }
 }

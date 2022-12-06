@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -33,15 +34,40 @@ builder.Services.AddTransient<IPostService, PostService>();
 builder.Services.AddTransient<IContactMessageService, ContactMessageService>();
 builder.Services.AddTransient<IFileManager, FileManager>();
 builder.Services.AddTransient<IPostManager, PostManager>();
+builder.Services.AddTransient<IUploadImageService, UploadImageService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
- 
+
 
 builder.Services.AddSingleton<IFileProvider>(
             new PhysicalFileProvider(
-                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"))); 
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
+
+app.MapGet("/api/test", (IUploadImageService uploadService) =>
+{
+    return Results.Ok(uploadService.Test());
+});
+app.MapPost("/api/save-image", (HttpContext httpContext, IUploadImageService uploadService) =>
+{
+    IFormFile file1 = null;
+    foreach (var file in httpContext.Request.Form.Files)
+    {
+        if (file.Length > 0)
+        {
+            file1= file;
+            break;
+        }
+    }
+    return Results.Ok(uploadService.Upload(file1));
+});
+app.MapGet("/api/image", (string filename, IUploadImageService uploadService) =>
+{
+    return Results.Ok(filename);
+});
 
 SeedUserDataService.Initialize(app.Services);
 // Configure the HTTP request pipeline.

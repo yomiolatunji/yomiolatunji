@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using YomiOlatunji.Core.DbModel.Post;
@@ -12,9 +8,9 @@ namespace YomiOlatunji.Areas.Admin.Pages.Messages
 {
     public class DetailsModel : PageModel
     {
-        private readonly YomiOlatunji.DataSource.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(YomiOlatunji.DataSource.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -33,10 +29,8 @@ namespace YomiOlatunji.Areas.Admin.Pages.Messages
             {
                 return NotFound();
             }
-            else 
-            {
-                ContactMessage = contactmessage;
-            }
+
+            ContactMessage = contactmessage;
             return Page();
         }
     }

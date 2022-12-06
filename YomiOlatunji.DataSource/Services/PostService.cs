@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using YomiOlatunji.Core;
@@ -13,7 +14,7 @@ namespace YomiOlatunji.DataSource.Services
         private readonly ApplicationDbContext _context;
         private readonly IPostManager _postManager;
 
-        public PostService(ApplicationDbContext context,IPostManager postManager)
+        public PostService(ApplicationDbContext context, IPostManager postManager)
         {
             _context = context;
             _postManager = postManager;
@@ -74,17 +75,26 @@ namespace YomiOlatunji.DataSource.Services
             post.IsDeleted = false;
             post.IsPublished = false;
             post.IsArchived = false;
-            post.CreateTime=DateTimeOffset.Now;
+            post.CreateTime = DateTimeOffset.Now;
             post.CreateBy = userName;
             post.Content = await _postManager.ExtractImageFromPost(post.Content);
-            post.Slug = _postManager.ExtractUrlFromTitle(post.Title);
-            post.Excerpt = post.Content.Substring(0, Math.Min(200, post.Content.Length));
+            var slug = _postManager.ExtractUrlFromTitle(post.Title);
+            if (_context.Posts.Any(a => a.Slug.ToLower()==slug.ToLower()))
+            {
+                slug = $"{slug}_{DateTime.Now:yyMMddHHmm}";
+            }
+            post.Slug = slug;
+            post.Excerpt = _postManager.ExtractExcerptFromPost(post.Content);
+
+            post.HeaderImage = Regex.Match(post.Content, "<img.+?src=[\"'](.+?)[\"'].+?>", RegexOptions.IgnoreCase).Groups[1]
+                .Value;
+            post.HeaderImage=post.HeaderImage.Replace("\"", "/");
 
             _context.Add(post);
             return (await _context.SaveChangesAsync()) > 0;
         }
 
-        public async Task<bool> PublishPost(long postId)
+        public async Task<bool> PublishPost(long postId, string userName)
         {
             var post = await _context.Posts.FirstOrDefaultAsync(a => a.Id == postId);
             if (post == null)
@@ -92,6 +102,8 @@ namespace YomiOlatunji.DataSource.Services
                 return false;
             }
             post.PublishDate = DateTimeOffset.Now;
+            post.UpdateBy = userName;
+            post.UpdateTime = DateTimeOffset.Now;
             post.IsPublished = true;
 
             //_repository.Update(category);

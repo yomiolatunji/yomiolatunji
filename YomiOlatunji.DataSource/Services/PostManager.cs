@@ -1,5 +1,7 @@
 ﻿using System.Text.RegularExpressions;
+using System.Web;
 using System.Xml;
+using YomiOlatunji.Core.DbModel.Post;
 using YomiOlatunji.DataSource.Services.Interfaces;
 
 namespace YomiOlatunji.DataSource.Services
@@ -72,6 +74,15 @@ namespace YomiOlatunji.DataSource.Services
             url = CleanFromInvalidChars(url);
             return url;
         }
+
+        public string ExtractExcerptFromPost(string content)
+        {
+            var text = StripHtml(content);
+            var s= text.Substring(0, Math.Min(200, text.Length));
+            s = HttpUtility.HtmlDecode(s);
+            return s;
+        }
+
         private string CleanFromInvalidChars(string input)
         {
             var allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_~";
@@ -79,6 +90,11 @@ namespace YomiOlatunji.DataSource.Services
             var r = new Regex($"[^{regexSearch}]");
             //var r = new Regex($"[^a-zA-Z\d\s:]");
             return r.Replace(input, string.Empty);
+        }
+        public string StripHtml(string htmlText)
+        {
+            Regex reg = new Regex("<[^>]+>", RegexOptions.IgnoreCase);
+            return reg.Replace(htmlText, "");
         }
     }
 }

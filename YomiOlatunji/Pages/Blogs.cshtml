@@ -34,10 +34,12 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center justify-content-md-start">
-                                            <img class="img-fluid" src="@item.HeaderImage">
+                                            <a asp-page="./Blog" asp-route-slug="@item.Slug">
+                                                <img class="img-fluid" src="@(item.HeaderImage ?? item.Category.HeaderImage)" style="max-height: 250px">
+                                            </a>
                                         </div>
                                         <div class="col-lg-8 col-md-12">
-                                            <h4 class="card-title"> New Ideas </h4>
+                                            <h4 class="card-title">@item.Title </h4>
                                             <div class="card-category">
                                                 <span class="badge badge-primary">@item.Category.Name</span>
                                             </div>
@@ -46,8 +48,7 @@
                                                 <p>@item.Excerpt</p>
                                             </div>
 
-
-                                            <a href="javascript:;" class="btn btn-link btn-info">See more</a>
+                                            <a asp-page="./Blog" asp-route-slug="@item.Slug" class="btn btn-link btn-info">See more</a>
 
                                         </div>
                                     </div>

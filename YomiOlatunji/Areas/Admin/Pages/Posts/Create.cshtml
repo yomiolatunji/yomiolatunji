@@ -54,7 +54,7 @@
 
             xhr = new XMLHttpRequest();
             xhr.withCredentials = false;
-            xhr.open('POST', 'postAcceptor.php');
+            xhr.open('POST', '/api/save-image');
 
             xhr.upload.onprogress = function(e) {
                 progress(e.loaded / e.total * 100);
@@ -79,8 +79,8 @@
                     failure('Invalid JSON: ' + xhr.responseText);
                     return;
                 }
-                success('http://moxiecode.cachefly.net/tinymce/v9/images/logo.png');
-                //success(json.location);
+                //success('http://moxiecode.cachefly.net/tinymce/v9/images/logo.png');
+                success(json.location);
             };
 
             xhr.onerror = function() {

@@ -10,5 +10,6 @@ namespace YomiOlatunji.DataSource.Services.Interfaces
     {
         Task<string> ExtractImageFromPost(string content);
         string ExtractUrlFromTitle(string title);
+        string ExtractExcerptFromPost(string content);
     }
 }
