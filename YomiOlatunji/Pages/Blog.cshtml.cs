@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using YomiOlatunji.Core.DbModel.Post;
+using YomiOlatunji.Core.ViewModel;
 using YomiOlatunji.DataSource;
 
 namespace YomiOlatunji.Pages
@@ -15,7 +16,7 @@ namespace YomiOlatunji.Pages
             _context = context;
         }
 
-        public Post Post { get; set; }
+        public BlogResponse Post { get; set; }
         public async Task<IActionResult> OnGet(string slug)
         {
             var post = await _context.Posts.Include(s=>s.Category).FirstOrDefaultAsync(a => a.Slug.ToLower() == slug.ToLower());
@@ -24,7 +25,21 @@ namespace YomiOlatunji.Pages
                 return NotFound();
             }
 
-            Post = post;
+            Post = new BlogResponse
+            {
+                CanComment=post.CanComment,
+                Category=post.Category,
+                CategoryId=post.CategoryId,
+                Content=post.Content,
+                Excerpt=post.Excerpt,
+                HeaderImage = post.HeaderImage,
+                Id=post.Id,
+                PublishDate=post.PublishDate,
+                Slug=post.Slug,
+                Title = post.Title,
+                Tags=post.Tags,
+                CreateBy=post.CreateBy
+            };
             return Page();
         }
     }

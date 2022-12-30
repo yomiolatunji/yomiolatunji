@@ -18,6 +18,7 @@ namespace YomiOlatunji.Core
         {
             Data = new List<T>();
         }
+
     }
     public class PagedList<T> : List<T>
     {

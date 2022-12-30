@@ -19,7 +19,7 @@ namespace YomiOlatunji.DataSource.Services
             _context = context;
             _postManager = postManager;
         }
-        public async Task<PageModel<Post>> GetPost(int intPageIndex = 1, int intPageSize = 20, Expression<Func<Post, bool>>? filter = null, Func<IQueryable<Post>, IOrderedQueryable<Post>>? orderBy = null, string includeProperties = "")
+        public async Task<PagedList<Post>> GetPost(int intPageIndex = 1, int intPageSize = 20, Expression<Func<Post, bool>>? filter = null, Func<IQueryable<Post>, IOrderedQueryable<Post>>? orderBy = null, string includeProperties = "")
         {
             IQueryable<Post> query = _context.Posts;
 
@@ -44,13 +44,7 @@ namespace YomiOlatunji.DataSource.Services
                 query = orderBy(query);
             }
 
-            decimal totalCount = await query.CountAsync();
-
-            int pageCount = (int)Math.Ceiling(totalCount / intPageSize);
-
-            var list = await query.Skip((intPageIndex - 1) * intPageSize).Take(intPageSize).ToListAsync();
-
-            return new PageModel<Post> { DataCount = (int)totalCount, PageCount = pageCount, PageNumber = intPageIndex, PageSize = intPageSize, Data = list };
+            return PagedList<Post>.Create(query, intPageIndex, intPageSize);
         }
 
         public async Task<PageModel<Post>> GetAllPost(int intPageIndex, int intPageSize)

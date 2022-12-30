@@ -13,10 +13,10 @@ namespace YomiOlatunji.Pages
             _postService = postService;
         }
         private readonly IPostService _postService;
-        public PageModel<Post> Post { get; set; }
-        public async Task OnGet()
+        public PagedList<Post> Post { get; set; }
+        public async Task OnGet(int pageNumber = 1, int pageSize = 20)
         {
-            Post = await _postService.GetPost(1,20,a=>a.IsPublished==true,null,"Category");
+            Post = await _postService.GetPost(pageNumber, pageSize, a => a.IsPublished == true, a => a.OrderByDescending(s => s.PublishDate), "Category");
         }
     }
 }
